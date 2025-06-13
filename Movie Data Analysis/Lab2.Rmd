@@ -1,0 +1,217 @@
+---
+title: "DAT 301 Lab2"
+author: "Kyle Tadokoro"
+date: "2024-01-28"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2movies)
+library(dplyr)
+data(movies)
+```
+
+```{r, include = FALSE}
+summary(movies)
+```
+
+## Question 1: What is the range of years of production?
+```{r, echo = FALSE}
+yearRange = max(movies$year) - min(movies$year)
+```
+The range of years of production is `r yearRange` years.
+
+The oldest movie was made in `r min(movies$year)` and the most recent was made in `r max(movies$year)`.
+
+
+## Question 2: How many included their budget? Most expensive?
+```{r, echo = FALSE}
+numNoBudget = sum(is.na(movies$budget))
+newList = arrange(movies, desc(budget))
+mostEX = c(newList$title, 1:5)
+perBud = round(((length(movies$budget) - numNoBudget) / length(movies$budget) * 100), digits = 2)
+```
+`r perBud`% of movies included their budget in the data base.  The 5 movies with the highest budgets in the data set are : `r mostEX[1:5]`.
+
+
+## Question 3: Top 5 longest movies?
+```{r, echo = FALSE}
+movieLengthList = arrange(movies, desc(length))
+longestMovies = c(movieLengthList$title, 1:5)
+```
+The five longest movies in the set are: `r longestMovies[1:5]`.
+
+## Question 4: Shortest short film? Longest?
+```{r, echo = FALSE}
+shortList = movies[movies$Short == 1,] 
+shortList = arrange(shortList, desc(length))
+shortShort = min(shortList$length)
+longShort = max(shortList$length)
+shortTitle = shortList$title[length(shortList)]
+longTitle = shortList$title[1]
+```
+Of all the short movies, the shortest is: "`r shortTitle`" at `r shortShort` minute(s) long, and the longest is: "`r longTitle`" at `r longShort` minutes long.  
+
+## Question 5: How many movies are there of each genre?
+```{r, echo = FALSE}
+genreSums = c(sum(movies$Action), sum(movies$Animation), sum(movies$Comedy), sum(movies$Drama), sum(movies$Documentary), sum(movies$Romance), sum(movies$Short))
+
+barplot(genreSums, main = "Distribution of Titles by Genre",  xlab = "Genres", ylab = "Number of Movies", col = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"))
+legend("topright", cex = .75, ncol = 2, c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short"), fill = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"))
+```
+
+
+The distribution of titles is as follows:
+
+Action: `r sum(movies$Action)`
+
+Animation: `r sum(movies$Animation)`
+
+Comedy: `r sum(movies$Comedy)`
+
+Drama: `r sum(movies$Drama)`
+
+Documentary: `r sum(movies$Documentary)`
+
+Romance: `r sum(movies$Romance)`
+
+Short: `r sum(movies$Short)`
+
+## Question 6: What is the average rating for each genre?
+```{r, echo = FALSE}
+genreList = select(movies, Action, Animation, Comedy, Drama, Documentary, Romance, Short)
+actionAvg = round(sum(movies$rating[movies$Action == 1]) / sum(movies$Action), digits = 2)
+animationAvg = round(sum(movies$rating[movies$Animation == 1]) / sum(movies$Animation), digits = 2)
+comedyAvg = round(sum(movies$rating[movies$Comedy == 1]) / sum(movies$Comedy), digits = 2)
+dramaAvg = round(sum(movies$rating[movies$Drama == 1]) / sum(movies$Drama), digits = 2)
+docAvg = round(sum(movies$rating[movies$Documentary == 1]) / sum(movies$Documentary), digits = 2)
+romAvg = round(sum(movies$rating[movies$Romance == 1]) / sum(movies$Romance), digits = 2)
+shortAvg = round(sum(movies$rating[movies$Short == 1]) / sum(movies$Short), digits = 2)
+
+barplot(c(actionAvg, animationAvg, comedyAvg, dramaAvg, docAvg, romAvg, shortAvg), ylim  = c(0,8), col = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"), xlab = "Genre", ylab = "Average Rating", main = "Average Rating by Genre")
+legend("topright", c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short"), cex = .5, ncol = 3, fill = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"))
+```
+
+
+Average scores of the categories are as follows (Out of a score of 10):
+
+Action: `r actionAvg`
+
+Animation: `r animationAvg`
+
+Comedy: `r comedyAvg`
+
+Documentary: `r docAvg`
+
+Drama: `r dramaAvg`
+
+Romance: `r romAvg`
+
+Short: `r shortAvg`
+
+## Question 7: What is the average rating for each genre from the years 2000-2005?
+```{r, echo = FALSE}
+movies2 = movies[((movies$year <= 2005) & (movies$year >= 2000)),]
+actionAvg2 = round(sum(movies2$rating[movies2$Action == 1]) / sum(movies2$Action), digits = 2)
+animationAvg2 = round(sum(movies2$rating[movies2$Animation == 1]) / sum(movies2$Animation), digits = 2)
+comedyAvg2 = round(sum(movies2$rating[movies2$Comedy == 1]) / sum(movies2$Comedy), digits = 2)
+dramaAvg2 = round(sum(movies2$rating[movies2$Drama == 1]) / sum(movies2$Drama), digits = 2)
+docAvg2 = round(sum(movies2$rating[movies2$Documentary == 1]) / sum(movies2$Documentary), digits = 2)
+romAvg2 = round(sum(movies2$rating[movies2$Romance == 1]) / sum(movies2$Romance), digits = 2)
+shortAvg2 = round(sum(movies2$rating[movies2$Short == 1]) / sum(movies2$Short), digits = 2)
+
+barplot(c(actionAvg2, animationAvg2, comedyAvg2, dramaAvg2, docAvg2, romAvg2, shortAvg2), ylim  = c(0,9), col = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"), xlab = "Genre", ylab = "Average Rating", main = "Average Rating by Genre For Years 2000-2005")
+legend("topright", c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short"),cex = .5,  ncol = 3, fill = c("red", "brown", "gold", "purple", "seagreen", "skyblue", "beige"))
+```
+
+
+Average scores of the categories are as follows (Out of a score of 10):
+
+Action: `r actionAvg2`
+
+Animation: `r animationAvg2`
+
+Comedy: `r comedyAvg2`
+
+Documentary: `r docAvg2`
+
+Drama: `r dramaAvg2`
+
+Romance: `r romAvg2`
+
+Short: `r shortAvg2`
+
+## Question 8: How did the production of each genre trend since 1990?
+```{r, echo = FALSE}
+#create vector of all unique years for x axis
+theNineties = select(movies[(movies$year >= 1990),], year, Action, Animation, Comedy, Drama, Documentary, Romance)
+theNineties = arrange(theNineties, year)
+yearVec = unique(theNineties$year)
+
+#Create and fill vectors for all categories for corresponding number of movies per year
+actVec = c(); aniVec = c(); comVec = c(); draVec = c(); docVec = c(); romVec = c()
+
+for (i in yearVec){
+  partSum = sum(theNineties$Action[theNineties$year == i ])
+  actVec = c(actVec, partSum)##add partSUm to actionVec
+}
+for (i in yearVec){
+  partSum = sum(theNineties$Animation[theNineties$year == i ])
+  aniVec = c(aniVec, partSum)##add partSUm to actionVec
+}
+for (i in yearVec){
+  partSum = sum(theNineties$Comedy[theNineties$year == i ])
+  comVec = c(comVec, partSum)##add partSUm to actionVec
+}
+for (i in yearVec){
+  partSum = sum(theNineties$Drama[theNineties$year == i ])
+  draVec = c(draVec, partSum)##add partSUm to actionVec
+}
+for (i in yearVec){
+  partSum = sum(theNineties$Documentary[theNineties$year == i ])
+  docVec = c(docVec, partSum)##add partSUm to actionVec
+}
+for (i in yearVec){
+  partSum = sum(theNineties$Romance[theNineties$year == i ])
+  romVec = c(romVec, partSum)##add partSUm to actionVec
+}
+
+#plot
+plot(actVec ~ yearVec, type = "o", col = "red", pch = "*", lty = 1, ylim = c(0, 925), xlab = "Years from 1990 - Present", ylab = "Number of Movies")
+points(yearVec, aniVec, col = "brown", pch = "*")
+lines(yearVec, aniVec, col = "brown", lty = 1)
+points(yearVec, comVec, col = "gold", pch = "*")
+lines(yearVec, comVec, col = "gold", lty = 1)
+points(yearVec, draVec, col = "purple", pch = "*")
+lines(yearVec, draVec, col = "purple", lty = 1)
+points(yearVec, docVec, col = "seagreen", pch = "*")
+lines(yearVec, docVec, col = "seagreen", lty = 1)
+points(yearVec, romVec, col = "skyblue", pch = "*")
+lines(yearVec, romVec, col = "skyblue", lty = 1)
+
+legend("topleft", c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance"), fill = c("red", "brown", "gold", "purple", "seagreen", "skyblue"), ncol = 2)
+```
+
+
+## Question 9: What genre of movies was produced the least?
+```{r, echo = FALSE}
+productionVec = c(sum(movies$Action), sum(movies$Animation), sum(movies$Comedy), sum(movies$Drama), sum(movies$Documentary), sum(movies$Short))
+leastProd = round((min(productionVec) / length(unique(movies$year))), digits = 2)
+```
+
+Animation was the least produced genre with an average of `r leastProd` movies made per year. 
+
+## Question 10: What was the most amount of movies made in one year by any one genre?
+```{r, echo = FALSE}
+yearVec = unique(movies$year)
+for (i in yearVec){
+  
+}
+```
+
+## Question 11: How did the rating of each genre trend since 1990?
+```{r, echo = FALSE}
+
+```
+
