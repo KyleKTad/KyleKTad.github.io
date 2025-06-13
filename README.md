@@ -3,7 +3,7 @@
 Welcome to my portfolio repository! Below I have brought together a few of the different projects I have worked on through my college career studying Data Science.
 
 ## Projects:
-- [BusinessA Sales Analysis](BusinessA%20Sales%20Analysis/index.html)
+- [BusinessA Sales Analysis](BusinessA%20Sales%20Analysis/DAT301 - Project 2 (3).html)
 - [MLB Playoff Predictor](MLB%20Playoff%20Predictor/index.html)
 - [March Madness Bracket Predictor](March%20Madness%20Bracket%20Predictor/index.html)
 - [Marketing Effectiveness Analysis](Marketing%20Effectiveness%20Analysis/index.html)
