@@ -4,7 +4,7 @@ Welcome to my portfolio repository! Below I have brought together a few of the d
 
 ## Projects:
 - [BusinessA Sales Analysis (PDF)](BusinessA%20Sales%20Analysis/DAT301Project2.pdf)
-- [MLB Playoff Predictor](MLB_Playoff_Predictor_%28Project%20402.%20Final%29.ipynb%20-%20Colab.pdf
+- [MLB Playoff Predictor](MLB_Playoff_Predictor_.ipynb.pdf
 )
 - [March Madness Bracket Predictor](March%20Madness%20Bracket%20Predictor/index.html)
 - [Marketing Effectiveness Analysis](Marketing%20Effectiveness%20Analysis/index.html)
