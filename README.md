@@ -7,9 +7,9 @@ Welcome to my portfolio repository! Below I have brought together a few of the d
 - [MLB Playoff Predictor](MLB%20Playoff%20Predictor/MLB_Playoff_Predictor_.ipynb.pdf
 )
 - [March Madness Bracket Predictor](March%20Madness%20Bracket%20Predictor/March_Madness_2025_Final_Version.ipynb)
-- [Marketing Effectiveness Analysis](Marketing%20Effectiveness%20Analysis/index.html)
-- [Movie Data Analysis](Movie%20Data%20Analysis/index.html)
-- [Sales Data Analysis](Sales%20Data%20Analysis/index.html)
+- [Marketing Effectiveness Analysis](Marketing%20Effectiveness%20Analysis/Bank_Marketing_Effectiveness_Analysis_final%20(1).ipynb%20-%20Colab.pdf)
+- [Movie Data Analysis](Movie%20Data%20Analysis/Lab2.pdf)
+- [Sales Data Analysis](Sales%20Data%20Analysis/Project1.pdf)
 
 ## Technologies Used:
 - Python
