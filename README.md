@@ -6,7 +6,7 @@ Welcome to my portfolio repository! Below I have brought together a few of the d
 - [BusinessA Sales Analysis (PDF)](BusinessA%20Sales%20Analysis/DAT301Project2.pdf)
 - [MLB Playoff Predictor](MLB%20Playoff%20Predictor/MLB_Playoff_Predictor_.ipynb.pdf
 )
-- [March Madness Bracket Predictor](March%20Madness%20Bracket%20Predictor/index.html)
+- [March Madness Bracket Predictor](March%20Madness%20Bracket%20Predictor/March_Madness_2025_Final_Version.ipynb)
 - [Marketing Effectiveness Analysis](Marketing%20Effectiveness%20Analysis/index.html)
 - [Movie Data Analysis](Movie%20Data%20Analysis/index.html)
 - [Sales Data Analysis](Sales%20Data%20Analysis/index.html)
