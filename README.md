@@ -18,4 +18,4 @@ Welcome to my portfolio repository! Below I have brought together a few of the d
 - Data Visualization (Matplotlib, Seaborn)
 
 ## Contact:
-Feel free to reach out to me via [LinkedIn]([https://www.linkedin.com/in/yourprofile](https://www.linkedin.com/in/kyle-tadokoro-96829730b/)) or [email](kyletadokoro@gmail.com).
+Feel free to reach out to me via [LinkedIn](https://www.linkedin.com/in/kyle-tadokoro-96829730b/) or kyletadokoro@gmail.com.
